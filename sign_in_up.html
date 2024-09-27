@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="Sign_i_u.css" rel="stylesheet">
+    <link rel="stylesheet" href="home_page.css">
+    <script src="sign.js" defer>
+    </script>
+</head>
+<body>
+<header >
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo"><i class='fas fa-seedling' style='font-size:25px; color: #ccc7c3; ' ></i>Blossom </a>
+    <nav class="navbar">
+        <a href="home_page.html">Home</a>
+        <a href="#">Shop</a>
+        <a href="contact.html">Contact us</a>
+        <a href="about_us.html">About</a>
+        <a href="#">Feedback</a>
+    </nav>
+    <div class="icons">
+        <a href="#" class="fas fa-heart"></a>
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <a href="#" class="fas fa-user"></a>
+    </div>
+</header>
+<!--header section end -->
+<div class="container">
+    <div class="signin-signup">
+        <form action="sign_in.php" method="POST" class="sign-in-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="Login" class="btn">
+
+            <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+        </form>
+
+        <form action="sign_up.php" method="post" class="sign-up-form">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="Sign up" class="btn">
+
+            <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+        </form>
+
+    </div>
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>Already have an account?</h3>
+                <p>Welcome Back!<br>  Sign in to access your account and explore new arrivals.</p>
+                <button class="btn" id="sign-in-btn">Sign in</button>
+            </div>
+            <img src="images/sign1.png" alt="" class="image">
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>Don't have an account?</h3>
+                <p>Join the Blossom Community!<br>Sign up today for exclusive perks, plant care tips, and special discounts!</p>
+                <button class="btn" id="sign-up-btn">Sign up</button>
+            </div>
+            <img src="images/sign1.png" alt="" class="image">
+        </div>
+    </div>
+</div>
+<!--Footer section -->
+<div class="footer" >
+    <div class="content">
+        <div class="services">
+            <h4>Shop</h4>
+            <p><a href="#">Indoor plants</a></p>
+            <p><a href="#">Outdoor plants</a></p>
+            <p><a href="#">plant pots</a></p>
+            <p><a href="#">Cactus</a></p>
+            <p><a href="#">Seeds</a></p>
+            <p><a href="#">Accessories</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p>
+                <a href="#"
+                ><i class="fab fa-linkedin"></i> Linkedin</a
+                >
+            </p>
+            <p>
+                <a href="#"
+                ><i class="fab fa-twitter"></i> Twitter</a
+                >
+            </p>
+            <p>
+                <a href="https://www.facebook.com/codewithfaraz"
+                ><i class="fab fa-facebook"></i> Facebook</a
+                >
+            </p>
+            <p>
+                <a href="https://www.instagram.com/codewithfaraz"
+                ><i class="fab fa-instagram"></i> Instagram</a
+                >
+            </p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="#">Home</a></p>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Shop</a></p>
+            <p><a href="#">Contact</a></p>
+            <p><a href="#">Feedback</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>
+                Jenin <br />
+                Abu Bakr Street, next to the Islamic Bank.
+            </p>
+            <h4 class="mobile">Mobile</h4>
+            <p><a href="#">+972 59-898-6445</a></p>
+            <h4 class="mail">Email</h4>
+            <p><a href="#">asmaa12112499@gmail.com</a></p>
+        </div>
+    </div>
+    <footer>
+        <hr />
+        © 2024 copyright.
+    </footer>
+</div>
+</body>
+</html>

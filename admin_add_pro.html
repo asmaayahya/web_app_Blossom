@@ -1,0 +1,145 @@
+<!-- admin_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="home_page.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="home.js"></script>
+    <link rel="stylesheet" href="admin_add.css">
+    <link rel="stylesheet" href="about_us.css">
+</head>
+<body>
+
+<!--header section start -->
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo"><i class='fas fa-seedling' style='font-size:25px; color: #ccc7c3; ' ></i>Blossom </a>
+    <nav class="navbar">
+        <a href="home_admin_page.html">Home</a>
+        <a href="dispaly.php">Shop</a>
+        <a href="contact_admin.html">Contact us</a>
+        <a href="about_us_admin.html">About</a>
+        <a href="admin_feedback.php">Feedback</a>
+        <a href="admin_btns.html">Admin</a>
+    </nav>
+    <div class="icons">
+        <a href="wishlist.html" class="fas fa-heart"></a>
+        <a  href="cart.html" class="fas fa-shopping-cart"></a>
+        <a href="sign_in_up.html" class="fas fa-user"></a>
+    </div>
+</header>
+<!--header section end -->
+<div class="first_div">
+    <h1>Add New Product</h1>
+</div>
+
+<div class="container">
+    <div class="image-container">
+        <video src="vedio/admin_add.mp4" loop muted autoplay></video>
+    </div>
+    <div class="form-container">
+
+        <form action="addProduct.php" method="post" enctype="multipart/form-data">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea><br>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="1" required><br>
+
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required><br>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="1">Indoor</option>
+                <option value="2">Outdoor</option>
+                <option value="3">Cactus</option>
+                <option value="4">Seeds</option>
+                <option value="5">Plant Pots</option>
+                <option value="6">Accessories</option>
+            </select><br>
+
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" required><br>
+
+            <input type="submit" value="Add Product">
+        </form>
+    </div>
+</div>
+
+<!-- footer section start -->
+<div class="footer">
+    <div class="content">
+        <div class="services">
+            <h4>Shop</h4>
+            <p><a href="#">Indoor plants</a></p>
+            <p><a href="#">Outdoor plants</a></p>
+            <p><a href="#">plant pots</a></p>
+            <p><a href="#">Cactus</a></p>
+            <p><a href="#">Seeds</a></p>
+            <p><a href="#">Accessories</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p>
+                <a href="#"
+                ><i class="fab fa-linkedin"></i> Linkedin</a
+                >
+            </p>
+            <p>
+                <a href="#"
+                ><i class="fab fa-twitter"></i> Twitter</a
+                >
+            </p>
+            <p>
+                <a href="https://www.facebook.com/codewithfaraz"
+                ><i class="fab fa-facebook"></i> Facebook</a
+                >
+            </p>
+            <p>
+                <a href="https://www.instagram.com/codewithfaraz"
+                ><i class="fab fa-instagram"></i> Instagram</a
+                >
+            </p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="#">Home</a></p>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Shop</a></p>
+            <p><a href="#">Contact</a></p>
+            <p><a href="#">Feedback</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>
+                Jenin <br />
+                Abu Bakr Street, next to the Islamic Bank.
+            </p>
+            <h4 class="mobile">Mobile</h4>
+            <p><a href="#">+972 59-898-6445</a></p>
+            <h4 class="mail">Email</h4>
+            <p><a href="#">asmaa12112499@gmail.com</a></p>
+        </div>
+    </div>
+    <footer>
+        <hr />
+        © 2024 copyright.
+    </footer>
+</div>
+<!-- footer section end -->
+
+
+
+
+
+
+</body>
+</html>

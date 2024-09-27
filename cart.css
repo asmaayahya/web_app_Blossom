@@ -1,0 +1,134 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+}
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x: hidden ;
+}
+
+/* header css */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #2c3628;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.1);
+}
+
+header .logo{
+    font-size: 3rem;
+    color: #ccc7c3;
+    font-weight: bolder;
+}
+
+header .navbar a{
+    font-size: 2rem;
+    padding: 0 1.5rem;
+    color: #ccc7c3;
+    border-radius: 3px;
+}
+header .navbar a:hover{
+    background:#7a8474;
+    transition: .5s;
+}
+header .icons a{
+    font-size: 2.5rem;
+    color: #ccc7c3;
+    margin-left: 1.5rem;
+}
+header .icons a:hover{
+    color: #9f455e;
+    transition: .5s;
+}
+header #toggler{
+    display: none;
+}
+header .fa-bars{
+    font-size: 3rem;
+    color: #ccc7c3;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    border: .1rem solid rgba(0,0,0,.3) ;
+    display: none;
+}
+
+/* General styles for the products section */
+.shop-products {
+    padding: 2rem;
+    text-align: center;
+}
+
+.shop-products .shop-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+
+.shop-products .shop-box-container {
+    display: flex; /* Use flex to keep elements in one line */
+    gap: 0.5rem; /* Adjust gap to reduce space between boxes */
+    justify-content: center; /* Center the items */
+    transition: transform 0.5s; /* Smooth movement */
+}
+
+.shop-products .shop-box {
+    flex: 0 1 10rem; /* Make each box occupy 10rem width */
+    max-width: 10rem; /* Ensure the max width is 10rem */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    border: 1rem solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s, width 0.3s; /* Smooth scaling on hover and resizing */
+    overflow: hidden;
+    margin: 0.5rem; /* Add margin for spacing */
+}
+
+.shop-products .shop-box:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.shop-products .shop-box .image {
+    position: relative;
+    text-align: center;
+    padding-top: 1rem; /* Reduce padding */
+    overflow: hidden;
+    width: 100%;
+}
+
+.shop-products .shop-box .shop-image img {
+    height: 5rem; /* Reduce image height */
+    width: 100%; /* Ensure the image fills the box */
+    object-fit: cover; /* Maintain aspect ratio */
+    transition: transform 0.3s; /* Smooth image scaling on hover */
+}
+
+.shop-products .shop-box:hover .image img {
+    transform: scale(1.1); /* Scale up image on hover */
+}
+
+.shop-products .shop-box .shop-content {
+    padding: 0.5rem; /* Reduce padding */
+    text-align: center;
+}
+
+.shop-products .shop-box .shop-content h3 {
+    font-size: 0.8rem; /* Reduce font size */
+    color: #2c3628;
+}

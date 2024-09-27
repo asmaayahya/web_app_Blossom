@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.feedback-card {
+    background-color: #ffffff;
+    border: 1px solid #98a598;
+    border-radius: 8px;
+    box-shadow: 0 5px 6px rgb(79, 111, 82);
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.2s;
+    box-sizing: border-box;
+}
+
+.feedback-card:hover {
+    transform: scale(1.02);
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Ensure wrapping in smaller screens */
+}
+
+.feedback-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    flex: 1; /* Allow it to grow */
+    min-width: 150px; /* Ensure minimum width */
+}
+
+.stars {
+    display: flex;
+    margin-left: 10px;
+}
+
+.stars i {
+    color: #f39c12;
+}
+
+.feedback-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+    width: 100%; /* Ensure it takes full width */
+    text-align: right; /* Align to right */
+}
+
+.feedback-card p {
+    margin: 0;
+    word-wrap: break-word;
+}
+
+@media (max-width: 600px) {
+    .feedback-card {
+        width: 90%;
+    }
+
+    .feedback-header {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: flex-start; /* Align to the start */
+    }
+
+    .stars {
+        margin-left: 0; /* Remove margin */
+        margin-top: 5px; /* Add some space at the top */
+    }
+
+    .feedback-date {
+        text-align: left; /* Align to left in smaller screens */
+    }
+}

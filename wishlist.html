@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="home_page.css">
+</head>
+<body>
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo"><i class='fas fa-seedling' style='font-size:25px; color: #ccc7c3; ' ></i>Blossom </a>
+    <nav class="navbar">
+        <a href="home_page.html">Home</a>
+        <a href="shop_html.html">Shop</a>
+        <a href="contact.html">Contact us</a>
+        <a href="about_us.html">About</a>
+        <a href="feeback.html">Feedback</a>
+    </nav>
+    <div class="icons">
+        <a href="wishlist.html" class="fas fa-heart"></a>
+        <a id="iconCart" href="cart.html" class="fas fa-shopping-cart"></a>
+        <a href="sign_in_up.html" class="fas fa-user"></a>
+    </div>
+</header>
+<!--header section end -->
+
+<section class="wishlist" id="wishlist">
+    <h1> <span>My Wishlist </span></h1>
+    <table class="wishlist-table" id="wishlist-items">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Wishlist items will be dynamically inserted here -->
+        </tbody>
+    </table>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadWishlist();
+    });
+
+    function loadWishlist() {
+        const wishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || [];
+
+        if (wishlistItems.length === 0) {
+            const tbody = document.querySelector('#wishlist-items tbody');
+            const emptyRow = document.createElement('tr');
+            const emptyCell = document.createElement('td');
+            emptyCell.colSpan = 4;
+            emptyCell.innerText = 'Your wishlist is empty.';
+            emptyRow.appendChild(emptyCell);
+            tbody.appendChild(emptyRow);
+            return;
+        }
+
+        const wishlistContainer = document.querySelector('#wishlist-items tbody');
+        wishlistContainer.innerHTML = ''; // Clear existing items
+
+        wishlistItems.forEach((item, index) => {
+            const rowElement = document.createElement('tr');
+
+            const imgCell = document.createElement('td');
+            const imgElement = document.createElement('img');
+            imgElement.src = item.imgSrc;
+            imgElement.alt = item.title;
+            imgCell.appendChild(imgElement);
+
+            const titleCell = document.createElement('td');
+            titleCell.classList.add('item-title');
+            titleCell.innerText = item.title;
+
+            const priceCell = document.createElement('td');
+            priceCell.classList.add('item-price');
+            priceCell.innerText = item.price;
+
+            const actionsCell = document.createElement('td');
+            const actionsDiv = document.createElement('div');
+            actionsDiv.classList.add('actions');
+
+            const addToCartButton = document.createElement('button');
+            addToCartButton.innerText = 'Add to Cart';
+            addToCartButton.addEventListener('click', () => {
+                addToCart(item);
+                wishlistItems.splice(index, 1);
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                rowElement.remove();
+                loadWishlist();
+            });
+
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove');
+            removeButton.innerText = '×';
+            removeButton.addEventListener('click', () => {
+                wishlistItems.splice(index, 1);
+                localStorage.setItem('wishlistItems', JSON.stringify(wishlistItems));
+                rowElement.remove();
+                loadWishlist();
+            });
+
+            actionsDiv.appendChild(addToCartButton);
+            actionsDiv.appendChild(removeButton);
+            actionsCell.appendChild(actionsDiv);
+
+            rowElement.appendChild(imgCell);
+            rowElement.appendChild(titleCell);
+            rowElement.appendChild(priceCell);
+            rowElement.appendChild(actionsCell);
+
+            wishlistContainer.appendChild(rowElement);
+        });
+    }
+
+    function addToCart(item) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        let existingItem = cartItems.find(cartItem => cartItem.title === item.title);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartItems.push({ imgSrc: item.imgSrc, title: item.title, price: parseFloat(item.price.replace('$', '')), quantity: 1 });
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    }
+</script>
+<div class="footer">
+    <div class="content">
+        <div class="services">
+            <h4>Shop</h4>
+            <p><a href="#">Indoor plants</a></p>
+            <p><a href="#">Outdoor plants</a></p>
+            <p><a href="#">Plant pots</a></p>
+            <p><a href="#">Cactus</a></p>
+            <p><a href="#">Seeds</a></p>
+            <p><a href="#">Accessories</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+            <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://www.facebook.com/codewithfaraz"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://www.instagram.com/codewithfaraz"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="#">Home</a></p>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Shop</a></p>
+            <p><a href="#">Contact</a></p>
+            <p><a href="#">Feedback</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>
+                Jenin <br />
+                Abu Bakr Street, next to the Islamic Bank.
+            </p>
+            <h4 class="mobile">Mobile</h4>
+            <p><a href="#">+972 59-898-6445</a></p>
+            <h4 class="mail">Email</h4>
+            <p><a href="#">asmaa12112499@gmail.com</a></p>
+        </div>
+    </div>
+    <footer>
+        <hr />
+        © 2024 copyright.
+    </footer>
+</div>
+
+</body>
+</html>

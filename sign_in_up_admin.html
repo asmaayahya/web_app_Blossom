@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="Sign_i_u.css" rel="stylesheet">
+    <link rel="stylesheet" href="home_page.css">
+    <script src="sign.js" defer>
+    </script>
+</head>
+<body>
+<!--header section start -->
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo"><i class='fas fa-seedling' style='font-size:25px; color: #ccc7c3; ' ></i>Blossom </a>
+    <nav class="navbar">
+        <a href="home_admin_page.html">Home</a>
+        <a href="dispaly.php">Shop</a>
+        <a href="contact_admin.html">Contact us</a>
+        <a href="about_us_admin.html">About</a>
+        <a href="admin_feedback.php">Feedback</a>
+        <a href="admin_btns.html">Admin</a>
+    </nav>
+    <div class="icons">
+        <a href="wishlist_admin.html" class="fas fa-heart"></a>
+        <a  href="cart_admin.html" class="fas fa-shopping-cart"></a>
+        <a href="sign_in_up_admin.html" class="fas fa-user"></a>
+    </div>
+</header>
+<!--header section end -->
+<div class="container">
+    <div class="signin-signup">
+        <form action="sign_in.php" method="POST" class="sign-in-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="Login" class="btn">
+
+            <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+        </form>
+
+        <form action="sign_up.php" method="post" class="sign-up-form">
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <input type="submit" value="Sign up" class="btn">
+
+            <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+        </form>
+
+    </div>
+    <div class="panels-container">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>Already have an account?</h3>
+                <p>Welcome Back!<br>  Sign in to access your account and explore new arrivals.</p>
+                <button class="btn" id="sign-in-btn">Sign in</button>
+            </div>
+            <img src="images/sign1.png" alt="" class="image">
+        </div>
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>Don't have an account?</h3>
+                <p>Join the Blossom Community!<br>Sign up today for exclusive perks, plant care tips, and special discounts!</p>
+                <button class="btn" id="sign-up-btn">Sign up</button>
+            </div>
+            <img src="images/sign1.png" alt="" class="image">
+        </div>
+    </div>
+</div>
+<!-- footer section start -->
+<div class="footer">
+    <div class="content">
+        <div class="services">
+            <h4>Shop</h4>
+            <p><a href="dispaly.php">Indoor plants</a></p>
+            <p><a href="dispaly.php">Outdoor plants</a></p>
+            <p><a href="dispaly.php">plant pots</a></p>
+            <p><a href="dispaly.php">Cactus</a></p>
+            <p><a href="dispaly.php">Seeds</a></p>
+            <p><a href="dispaly.php">Accessories</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p>
+                <a href="http://linkedin.com/in/mira-assi-1113ab239"
+                ><i class="fab fa-linkedin"></i> Linkedin</a
+                >
+            </p>
+            <p>
+                <a href="#"
+                ><i class="fab fa-twitter"></i> Twitter</a
+                >
+            </p>
+            <p>
+                <a href="https://www.facebook.com/asmaa.yahya.5661"
+                ><i class="fab fa-facebook"></i> Facebook</a
+                >
+            </p>
+            <p>
+                <a href="https://www.instagram.com/asmaa_yahya000/"
+                ><i class="fab fa-instagram"></i> Instagram</a
+                >
+            </p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="home_admin_page.html">Home</a></p>
+            <p><a href="about_us_admin.html">About</a></p>
+            <p><a href="dispaly.php">Shop</a></p>
+            <p><a href="contact_admin.html">Contact</a></p>
+            <p><a href="admin_feedback.php">Feedback</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>
+                Jenin <br />
+                Abu Bakr Street, next to the Islamic Bank.
+            </p>
+            <h4 class="mobile">Mobile</h4>
+            <p><a href="#">+972 59-898-6445</a></p>
+            <h4 class="mail">Email</h4>
+            <p><a href="mailto:asmaa12112499@gmail.com">asmaa12112499@gmail.com</a></p>
+        </div>
+    </div>
+    <footer>
+        <hr />
+        © 2024 copyright.
+    </footer>
+</div>
+<!-- footer section end -->
+
+</body>
+</html>

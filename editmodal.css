@@ -1,0 +1,48 @@
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.modal-body1 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form input labels */
+label {
+    background-color: #987f88;
+    padding-bottom: 15px;
+    font-size: 13px;
+    font-weight: bold;
+
+}
+
+/* Form input fields */
+input[type="text"],
+input[type="number"],
+textarea {
+
+    width: 100%;
+    padding : 12px;
+    border: 2px solid  #ac9c98;;
+    border-radius: 4px ;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+#1234{
+    text-align: center;
+    background-color: #987f88;
+}

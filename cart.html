@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Cart</title>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="home_page.css">
+    <style>
+        .modal5 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+
+        }
+
+        .modal-content1 {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            height: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            background-image: url('images/flowerr.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        form label {
+            text-align: left;
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            font-size:10pt ;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
+
+        form input {
+            position: relative;
+            left: 10%;
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="#" class="logo"><i class='fas fa-seedling' style='font-size:25px; color: #ccc7c3; ' ></i>Blossom </a>
+    <nav class="navbar">
+        <a href="home_page.html">Home</a>
+        <a href="shop_html.html">Shop</a>
+        <a href="contact.html">Contact us</a>
+        <a href="about_us.html">About</a>
+        <a href="feeback.html">Feedback</a>
+    </nav>
+    <div class="icons">
+        <a href="wishlist.html" class="fas fa-heart"></a>
+        <a id="iconCart" href="cart.html" class="fas fa-shopping-cart"></a>
+        <a href="sign_in_up.html" class="fas fa-user"></a>
+    </div>
+</header>
+
+
+<br>
+<br><br><br><br><br><br><br><br>
+<section class="cart-list" id="cart-list">
+    <h2>Cart</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total">
+        <h3>Total: $<span id="total-cost">0.00</span></h3>
+        <button class="cart-btn" id="buy-button">Buy</button>
+        <button class="cart-btn" id="clear-all-button">Clear All</button>
+        <button class="cart-btn" onclick="openConfirmModal()">Confirm Order</button>
+    </div>
+</section>
+<div id="confirmModal" class="modal5">
+    <!-- Modal content -->
+    <div class="modal-content1">
+        <span class="close">&times;</span>
+
+        <form action="process.php" method="post">
+            <label style="font-weight: bold ; text-align: center ; font-size: 15pt">Confirm Your Details</label>
+            <br>
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required><br><br>
+
+            <label for="address">Address:</label>
+            <input style="text-wrap: auto" type="text" id="address" name="address" required><br><br>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required><br><br>
+
+            <button style="position: relative ; left: 10% ; width: 30%" class="cart-btn" >Submit</button>
+        </form>
+    </div>
+</div>
+<!-- Modal -->
+<!-- Modal -->
+
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+            <img src="images/order.webp" class="modal-image" alt="Image description">
+            <div >
+              <br>
+                <br>
+                <br>
+                <br>
+                <h2 style="top: 15%; text-align: center; position: relative; left: 80px" >Your order is done.</h2><br>
+                <h2 style=" text-align: center;position: relative; left: 80px">Thank you for choosing us!</h2><br>
+                <h2 style="text-align: center;position: relative; left: 80px">Have a nice day!</h2><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOMContentLoaded event listener added");
+        loadCart();
+
+        document.getElementById('buy-button').addEventListener('click', buyItems);
+        console.log("Buy button event listener added");
+
+        document.getElementById('clear-all-button').addEventListener('click', clearAllItems);
+        console.log("Clear all button event listener added");
+
+        // Modal close functionality
+        document.getElementsByClassName('close')[0].addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+        console.log("Modal close event listener added");
+
+        window.addEventListener('click', (event) => {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        });
+        console.log("Window click event listener added");
+    });
+
+    function updateTotalCost(cartItems) {
+        let totalCost = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        document.getElementById('total-cost').innerText = totalCost.toFixed(2);
+    }
+
+
+    function saveCartItems(cartItems) {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCart();
+
+        document.getElementById('buy-button').addEventListener('click', buyItems);
+        document.getElementById('clear-all-button').addEventListener('click', clearAllItems);
+
+        // Modal close functionality
+        document.getElementsByClassName('close')[0].addEventListener('click', () => {
+            document.getElementById('myModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = 'none';
+            }
+        });
+    });
+
+    function buyItems() {
+        const userID = 1; // Replace with session management code to get actual user ID
+
+        const orderDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const totalAmount = parseFloat(document.getElementById('total-cost').innerText);
+
+        fetch('insert_order.php', {
+            method: 'POST',
+            body: JSON.stringify({ userID, orderDate, totalAmount }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+            .then(data => {
+                const orderID = data.orderID;
+
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                const orderDetails = cartItems.map(item => ({
+                    orderID,
+                    productID: item.productID,
+                    quantity: item.quantity,
+                    price: item.price
+                }));
+
+                fetch('insert_order_details.php', {
+                    method: 'POST',
+                    body: JSON.stringify(orderDetails),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            localStorage.removeItem('cartItems');
+                            loadCart();
+                            document.getElementById('myModal').style.display = 'block';
+                        } else {
+                            console.error('Failed to insert order details');
+                        }
+                    });
+            });
+    }
+
+    function clearAllItems() {
+        localStorage.removeItem('cartItems');
+        loadCart();
+    }
+
+    function loadCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        if (cartItems.length === 0) {
+            document.getElementById('cart-items').innerText = 'Your cart is empty.';
+            document.getElementById('total-cost').innerText = '0.00';
+            return;
+        }
+
+        const cartContainer = document.getElementById('cart-items');
+        cartContainer.innerHTML = ''; // Clear existing items
+
+        let totalCost = 0;
+
+        cartItems.forEach(item => {
+            if (!item.price || isNaN(item.price)) {
+                console.error('Invalid price for item:', item);
+                return;
+            }
+
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = item.imgSrc;
+            imgElement.alt = item.title;
+
+            const titleElement = document.createElement('p');
+            titleElement.innerText = item.title;
+
+            const priceElement = document.createElement('p');
+            priceElement.innerText = `$${(item.price * item.quantity).toFixed(2)}`;
+
+            const quantityElement = document.createElement('p');
+            quantityElement.innerText = `Quantity: ${item.quantity}`;
+
+            // Create buttons for increasing and decreasing quantity
+            const increaseButton = document.createElement('button');
+            increaseButton.innerText = '+';
+            increaseButton.addEventListener('click', () => {
+                item.quantity++;
+                quantityElement.innerText = `Quantity: ${item.quantity}`;
+                priceElement.innerText = `$${(item.price * item.quantity).toFixed(2)}`;
+                updateTotalCost(cartItems); // Update total cost here
+                saveCartItems(cartItems);
+                console.log('Item quantity updated. New quantity:', item.quantity, 'New total cost:', (item.price * item.quantity).toFixed(2));
+            });
+
+            const decreaseButton = document.createElement('button');
+            decreaseButton.innerText = '-';
+            decreaseButton.addEventListener('click', () => {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    quantityElement.innerText = `Quantity: ${item.quantity}`;
+                    priceElement.innerText = `$${(item.price * item.quantity).toFixed(2)}`;
+                    updateTotalCost(cartItems); // Update total cost here
+                    saveCartItems(cartItems);
+                    console.log('Item quantity updated. New quantity:', item.quantity, 'New total cost:', (item.price * item.quantity).toFixed(2));
+                }
+            });
+
+
+            const closeButton = document.createElement('span');
+            closeButton.classList.add('remove');
+            closeButton.innerText = '×';
+            closeButton.addEventListener('click', () => {
+                cartItems.splice(cartItems.indexOf(item), 1);
+                itemElement.remove();
+                updateTotalCost(cartItems);
+                saveCartItems(cartItems);
+            });
+
+            itemElement.appendChild(imgElement);
+            itemElement.appendChild(titleElement);
+            itemElement.appendChild(priceElement);
+            itemElement.appendChild(quantityElement);
+            itemElement.appendChild(increaseButton);
+            itemElement.appendChild(decreaseButton);
+            itemElement.appendChild(closeButton);
+
+            cartContainer.appendChild(itemElement);
+
+            totalCost += item.price * item.quantity;
+        });
+
+        document.getElementById('total-cost').innerText = totalCost.toFixed(2);
+    }
+
+
+</script>
+
+<div class="footer">
+    <div class="content">
+        <div class="services">
+            <h4>Shop</h4>
+            <p><a href="#">Indoor plants</a></p>
+            <p><a href="#">Outdoor plants</a></p>
+            <p><a href="#">Plant pots</a></p>
+            <p><a href="#">Cactus</a></p>
+            <p><a href="#">Seeds</a></p>
+            <p><a href="#">Accessories</a></p>
+        </div>
+        <div class="social-media">
+            <h4>Social</h4>
+            <p><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+            <p><a href="#"><i class="fab fa-twitter"></i> Twitter</a></p>
+            <p><a href="https://www.facebook.com/codewithfaraz"><i class="fab fa-facebook"></i> Facebook</a></p>
+            <p><a href="https://www.instagram.com/codewithfaraz"><i class="fab fa-instagram"></i> Instagram</a></p>
+        </div>
+        <div class="links">
+            <h4>Quick links</h4>
+            <p><a href="#">Home</a></p>
+            <p><a href="#">About</a></p>
+            <p><a href="#">Shop</a></p>
+            <p><a href="#">Contact</a></p>
+            <p><a href="#">Feedback</a></p>
+        </div>
+        <div class="details">
+            <h4 class="address">Address</h4>
+            <p>
+                Jenin <br />
+                Abu Bakr Street, next to the Islamic Bank.
+            </p>
+            <h4 class="mobile">Mobile</h4>
+            <p><a href="#">+972 59-898-6445</a></p>
+            <h4 class="mail">Email</h4>
+            <p><a href="#">asmaa12112499@gmail.com</a></p>
+        </div>
+    </div>
+    <footer>
+        <hr />
+        © 2024 copyright.
+    </footer>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("confirmModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    function openConfirmModal() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
+
